@@ -1,6 +1,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using RevitAddin.DI.Simple.Services;
+using RevitAddin.DI.Simple.Services.Commands;
 using RevitAddin.DI.Simple.Services.My;
 using ricaun.Revit.UI;
 using System;
@@ -29,6 +30,15 @@ namespace RevitAddin.DI.Simple.Revit
                     .SetLargeImage("Resources/Revit.ico")
                 );
 
+            ribbonPanel.RowStackedItems(
+               ribbonPanel.CreatePushButton<RevitCommand<CommandA>>("Command A")
+                   .SetLargeImage("Resources/Revit.ico"),
+               ribbonPanel.CreatePushButton<RevitCommand<CommandB>>("Command B")
+                   .SetLargeImage("Resources/Revit.ico"),
+               ribbonPanel.CreatePushButton<RevitCommand<CommandC>>("Command C")
+                   .SetLargeImage("Resources/Revit.ico")
+               );
+
             // Register services
             {
                 var container = this.GetContainer();
@@ -41,6 +51,10 @@ namespace RevitAddin.DI.Simple.Revit
                 container.Singleton<IMyServiceA, MyServiceA>();
                 container.Singleton<IMyServiceB, MyServiceB>();
                 container.Singleton<IMyServiceC, MyServiceC>();
+
+                container.Singleton<CommandA>();
+                container.Singleton<CommandB>();
+                container.Singleton<CommandC>();
             }
 
             return Result.Succeeded;
