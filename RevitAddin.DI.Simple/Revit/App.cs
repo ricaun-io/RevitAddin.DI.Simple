@@ -24,7 +24,7 @@ namespace RevitAddin.DI.Simple.Revit
             container.Singleton<UIControlledApplication>(application);
             container.Singleton<UIApplication>(application.GetUIApplication());
 
-            container.Singleton<RevitService>();
+            container.Singleton<RevitCommandService>();
             container.Singleton<IWallService, WallService>();
 
             return Result.Succeeded;

@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace RevitAddin.DI.Simple.Services
 {
-    public class RevitService
+    public class RevitCommandService
     {
         private readonly UIApplication uiapp;
         private readonly IWallService wallService;
 
-        public RevitService(UIApplication uiapp, IWallService wallService)
+        public RevitCommandService(UIApplication uiapp, IWallService wallService)
         {
             this.uiapp = uiapp;
             this.wallService = wallService;

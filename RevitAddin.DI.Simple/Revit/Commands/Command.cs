@@ -11,7 +11,7 @@ namespace RevitAddin.DI.Simple.Revit.Commands
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elementSet)
         {
-            this.GetService<RevitService>()
+            this.GetService<RevitCommandService>()
                 .ShowVersion();
 
             return Result.Succeeded;
