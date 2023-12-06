@@ -19,6 +19,11 @@ namespace RevitAddin.DI.Simple
             return container;
         }
 
+        public static IContainer Singleton<TService>(this IContainer container)
+        {
+            return container.Singleton(() => container.CreateInstance<TService>());
+        }
+
         public static IContainer Singleton<TService, TImpl>(this IContainer container)
             where TImpl : TService
         {
