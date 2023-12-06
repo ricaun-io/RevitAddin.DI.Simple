@@ -11,9 +11,12 @@ namespace RevitAddin.DI.Simple.Revit
         private static RibbonPanel ribbonPanel;
         public Result OnStartup(UIControlledApplication application)
         {
-            ribbonPanel = application.CreatePanel("RevitAddin.DI.Simple");
+            ribbonPanel = application.CreatePanel("DI.Simple");
             ribbonPanel.CreatePushButton<Commands.Command>()
                 .SetLargeImage("Resources/Revit.ico");
+
+
+
             return Result.Succeeded;
         }
 
