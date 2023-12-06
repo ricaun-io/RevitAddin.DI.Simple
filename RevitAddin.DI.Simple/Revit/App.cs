@@ -1,5 +1,6 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using RevitAddin.DI.Simple.Revit.Commands;
 using RevitAddin.DI.Simple.Services;
 using RevitAddin.DI.Simple.Services.Commands;
 using RevitAddin.DI.Simple.Services.My;
@@ -15,18 +16,18 @@ namespace RevitAddin.DI.Simple.Revit
         public Result OnStartup(UIControlledApplication application)
         {
             ribbonPanel = application.CreatePanel("DI.Simple");
-            ribbonPanel.CreatePushButton<Commands.Command>("Version")
+            ribbonPanel.CreatePushButton<Command>("Version")
                 .SetLargeImage("Resources/Revit.ico");
 
-            ribbonPanel.CreatePushButton<Commands.CommandWalls>("Walls")
+            ribbonPanel.CreatePushButton<CommandWalls>("Walls")
                 .SetLargeImage("Resources/Revit.ico");
 
             ribbonPanel.RowStackedItems(
-                ribbonPanel.CreatePushButton<Commands.CommandMyA>("A")
+                ribbonPanel.CreatePushButton<CommandMyA>("My A")
                     .SetLargeImage("Resources/Revit.ico"),
-                ribbonPanel.CreatePushButton<Commands.CommandMyB>("B")
+                ribbonPanel.CreatePushButton<CommandMyB>("My B")
                     .SetLargeImage("Resources/Revit.ico"),
-                ribbonPanel.CreatePushButton<Commands.CommandMyC>("C")
+                ribbonPanel.CreatePushButton<CommandMyC>("My C")
                     .SetLargeImage("Resources/Revit.ico")
                 );
 
